@@ -16,14 +16,16 @@ public class StudentGroup {
         return false;
     }
 
-    public void addStudent(Student student) {
+    public Student[] addStudent(Student student) {
+        Student[] studentsNew = new Student[students.length];
         try {
             if(students.length < 15 && !isInGroup(student)) {
-                Student[] studentsNew = new Student[students.length + 1];
+                studentsNew = new Student[students.length + 1];
                 for(int i = 0; i < students.length; i++) {
                     studentsNew[i] = students[i];
                 }
                 studentsNew[students.length-1] = student;
+                students = studentsNew;
             }
         } catch (IllegalStateException e) {
             if (students.length >= 15) {
@@ -34,5 +36,6 @@ public class StudentGroup {
             }
             e.printStackTrace();
         }
+        return studentsNew;
     }
 }
