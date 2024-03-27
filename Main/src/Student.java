@@ -26,6 +26,12 @@ public class Student {
             System.out.println("No marks found. Invalid student");
             e.printStackTrace();
         }
-        return Math.round(sum*100)/100.0;
+        if(Math.round(sum*100)/100.0 - Math.round(sum) < 0.75 && Math.round(sum*100)/100.0 - Math.round(sum) > 0.5) {
+            return Math.round(sum) - 1;
+        } else if(Math.round(sum*100)/100.0 - Math.round(sum) > 0.75 && Math.round(sum*100)/100.0 - Math.round(sum)
+                < 0.5) {
+            return Math.round(sum) + 1;
+        }
+        return Math.round(sum);
     }
 }
